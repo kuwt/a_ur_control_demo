@@ -13,11 +13,11 @@ def gen_script():
 
     script = ''
     script += 'def PriamryProgram():' + '\n'
-    t = 10.
-    x = 0.
+    t = 10. #sec
+    x = 0.  #m
     y = -0.233
-    z = 0.1
-    rx = 2.7
+    z = 0.05
+    rx = 2.7 #rad
     ry = 1.7
     rz = 0.
     
@@ -48,4 +48,8 @@ time.sleep(1)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 s.send(script.encode(encoding='utf_8', errors='strict'))
+
+data = s.recv(1024)
 s.close()
+
+print("Received", repr(data))
